@@ -42,7 +42,8 @@ export default function Home() {
           ))}
         />
       </div>
-      <div>
+      <div className="bg-red-600 p-5">
+        <div className="bg-white rounded p-5">
         <p>
           Bienvenue sur notre site dédié à la sensibilisation aux problèmes liés
           aux émissions de <span className="highlight">CO2E</span>. Notre mission :
@@ -74,6 +75,7 @@ export default function Home() {
             la différence." - L'équipe d'Exploration CO2E
           </p>
         </blockquote>
+        </div>
       </div>
     </>
   );
