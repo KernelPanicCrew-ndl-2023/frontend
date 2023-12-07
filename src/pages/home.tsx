@@ -45,7 +45,7 @@ export default function Home() {
       <div>
         <p>
           Bienvenue sur notre site dédié à la sensibilisation aux problèmes liés
-          aux émissions de <span class="highlight">CO2E</span>. Notre mission :
+          aux émissions de <span className="highlight">CO2E</span>. Notre mission :
           vous aider à comprendre l'impact de nos émissions de gaz à effet de
           serre sur notre environnement afin de mieux les réduire.
         </p>
