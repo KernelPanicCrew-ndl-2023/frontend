@@ -1,0 +1,60 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: ndl
+  name: frontend
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+    - hosts:
+        - frontend.ndl.nponsard.net
+      secretName: front-ndl-nponsard.net-tls
+  rules:
+    - host: frontend.ndl.nponsard.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ndl
+  name: frontend
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: frontend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ndl
+  name: frontend-nginx
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: sautax/frontend-ndl:latest
+          ports:
+            - containerPort: 80
