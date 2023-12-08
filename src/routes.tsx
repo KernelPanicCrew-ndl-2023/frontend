@@ -1,10 +1,11 @@
 import { RouteObject } from "react-router-dom";
 import Home from "./pages/home";
 import { routes as QuizzRoutes } from "./pages/quizz/routes";
+import Layout from "./components/Layout";
 
 const routes: RouteObject[] = [
   {
-    path: "/",
+    path: "",
     element: <Home />,
   },
   {
@@ -14,5 +15,5 @@ const routes: RouteObject[] = [
 ];
 
 export function getRoutes(): RouteObject[] {
-  return routes;
+  return [{ path: "/", element: <Layout />, children: routes }];
 }
