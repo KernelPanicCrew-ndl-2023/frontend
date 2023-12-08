@@ -1,9 +1,10 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { useState } from "react";
 import { Question } from "../../components/quizz/Question";
 import { Results } from "../../components/quizz/Results";
-import Santa from "../../assets/Santa.svg";
-import Bear from "../../assets/Bear.svg";
-import Deer from "../../assets/Deer.svg";
+import Santa from "../../assets/Santa.svg?react";
+import Bear from "../../assets/Bear.svg?react";
+import Deer from "../../assets/Deer.svg?react";
 
 const questions = [
   {
@@ -118,7 +119,7 @@ export default function Index() {
   const [counter, setCounter] = useState(0);
 
   const onNext = () => {
-    setCounter(0)
+    setCounter(0);
     if (reveal) {
       setReveal(false);
       if (index >= questions.length - 1) {
@@ -132,7 +133,7 @@ export default function Index() {
   const onValidate = (selected: number) => {
     if (reveal) {
       // Is valide :
-      if (questions[index].options[selected].valid){
+      if (questions[index].options[selected].valid) {
         setCounter(counter + 1);
         console.log(counter);
       }
@@ -154,13 +155,13 @@ export default function Index() {
           answers={answers}
           questions={questions}
           onRestart={() => {
-          setFinished(false);
-          setAnswers(Array(questions.length).fill(undefined));
-          setIndex(0);
-        }}
+            setFinished(false);
+            setAnswers(Array(questions.length).fill(undefined));
+            setIndex(0);
+          }}
         />
-        ) : (
-          <>
+      ) : (
+        <>
           <Question
             questionInfo={questions[index]}
             reveal={reveal}
@@ -169,18 +170,15 @@ export default function Index() {
             selected={answers[index]}
           />
           {counter >= 5 && counter < 10 ? (
-            <img className="h-64 w-64 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              src={Santa} alt="Santa pas content"/>
-              ) : null }
+            <Santa className="h-64 w-64 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+          ) : null}
           {counter >= 10 && counter < 15 ? (
-            <img className="h-64 w-64 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              src={Deer} alt="Deer pas content"/>
-              ) : null }
+            <Deer className="h-64 w-64 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+          ) : null}
           {counter >= 15 ? (
-            <img className="h-64 w-64 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              src={Bear} alt="Bear pas content"/>
-              ) : null }
-          </>
+            <Bear className="h-64 w-64 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+          ) : null}
+        </>
       )}
     </div>
   );
