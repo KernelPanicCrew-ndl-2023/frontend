@@ -4,21 +4,103 @@ import { Results } from "../../components/quizz/Results";
 
 const questions = [
   {
-    question: "What is the capital of France?",
+    question:
+      "En Europe, en 2017, la pollution de l’air a été responsable de la mort prématurée de :",
     options: [
-      { text: "Option 1", valid: true },
-      { text: "Option 2", valid: false },
-      { text: "Option 3", valid: false },
-      { text: "Option 4", valid: false },
+      { text: "400 personnes", valid: false },
+      { text: "4.000 personnes", valid: false },
+      { text: "40.000 personnes", valid: false },
+      { text: "400.000 personnes", valid: true },
     ],
   },
   {
-    question: "What is the capital of Germany?",
+    question:
+      "Quel est le pourcentage de production d’électricité d'origine photovoltaïque par rapport à la production totale d’électricité au niveau mondial ?",
     options: [
-      { text: "Option 1", valid: false },
-      { text: "Option 2", valid: false },
-      { text: "Option 3", valid: true },
-      { text: "Option 4", valid: false },
+      { text: "0.1%", valid: false },
+      { text: "1%", valid: true },
+      { text: "30%", valid: false },
+      { text: "70%", valid: false },
+    ],
+  },
+  {
+    question:
+      "A combien se monte la production d’énergie hydraulique en 2017 dans la production totale d’électricité en France ? ",
+    options: [
+      { text: "9%", valid: true },
+      { text: "19%", valid: false },
+      { text: "29%", valid: false },
+      { text: "39%", valid: false },
+    ],
+  },
+  {
+    question:
+      "Quel pourcentage d’émission de dioxyde de carbone est attribué aux villes (qui n’occupent que 3% de la masse continentale mondiale) ?",
+    options: [
+      { text: "3%", valid: false },
+      { text: "10%", valid: false },
+      { text: "30%", valid: false },
+      { text: "70%", valid: true },
+    ],
+  },
+  {
+    question:
+      "En France, quelle est en moyenne la part des trajets domicile/travail effectués en voiture ?",
+    options: [
+      { text: "40%", valid: false },
+      { text: "60%", valid: false },
+      { text: "70%", valid: true },
+      { text: "90%", valid: false },
+    ],
+  },
+  {
+    question:
+      "En France, un passager dans un tramway émet 3 g de CO2 par km. Combien émet un conducteur seul de voiture thermique en milieu urbain en moyenne ?",
+    options: [
+      { text: "1.3 g/km", valid: false },
+      { text: "13 g/km", valid: false },
+      { text: "130 g/km", valid: true },
+      { text: "1300 g/km", valid: false },
+    ],
+  },
+  {
+    question:
+      "La production d’électricité (et de chaleur) et l'agriculture sont les deux premiers postes d’émission de Gaz à Effet de Serre dans le monde (respectivement 25%, 24%). Parmi les propositions suivantes, quel secteur vient ensuite : ",
+    options: [
+      { text: "La construction", valid: false },
+      { text: "Le transport", valid: false },
+      { text: "Le numérique", valid: false },
+      { text: "L’industrie", valid: true },
+    ],
+  },
+  {
+    question:
+      "Les forêts occupent environ 30% de la surface émergée de la planète et représentent un puits de carbone. Quel pourcentage de CO2 d'origine humaine absorbe-t-elle ? ",
+    options: [
+      { text: "1%", valid: false },
+      { text: "10%", valid: false },
+      { text: "15%", valid: false },
+      { text: "20%", valid: true },
+    ],
+  },
+  {
+    question:
+      "Le réchauffement climatique provient d'une concentration en CO2 dans l'atmosphère. Cette concentration volumique alarmante est d'environ : ",
+    options: [
+      { text: "0,04%", valid: true },
+      { text: "0,4%", valid: false },
+      { text: "4%", valid: false },
+      { text: "40%", valid: false },
+    ],
+  },
+  {
+    question:
+      "Les océans représentent 70% de la surface de la planète. Quelle quantité́ de CO2 d'origine humaine absorbent-ils ?",
+    options: [
+      { text: "1%", valid: false },
+      { text: "10%", valid: false },
+      { text: "30%", valid: true },
+      { text: "60%", valid: false },
     ],
   },
 ];
@@ -56,7 +138,7 @@ export default function Index() {
 
   return (
     <div>
-      <h1 className="text-4xl font-medium"> Quizz</h1>
+      <h1 className="text-4xl font-medium"> Quiz</h1>
       {finished ? (
         <Results
           answers={answers}
