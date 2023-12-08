@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FitStatus, checkFit } from "./fit";
 import { Piece, deconstructOnField, randomPiece } from "./piece";
 import { Field, copy2DArray } from "./field";
+import { Button } from "@mui/material";
 
 enum GameState {
   MENU,
@@ -49,6 +50,7 @@ export function Tetris() {
     setGameField(new Field());
     frameCount = 0;
     changePieces();
+    setScore(0);
   }
 
   function changePieces() {
@@ -217,23 +219,46 @@ export function Tetris() {
     };
   });
 
+  if (score > 404) {
+    setScore(404);
+    setGameState(GameState.MENU);
+  }
+
   return (
     <div>
-      <p>Score : {score}</p>
-      <button
+      <div className="flex w-full flex-col max-w-2xl m-auto">
+        <h1 className="text-4xl font-medium m-auto">404</h1>
+        <h1 className="text-4xl font-medium m-auto">
+          Oh non vous vous êtes égaré ! <br />
+        </h1>
+        <h1 className="text-2xl font-medium m-auto">
+          Voici un petit jeu pour vous occuper
+        </h1>
+      </div>
+
+      <p className={score === 404 ? "text-4xl" : ""}>Score : {score}</p>
+      <Button
         onClick={() => {
           initGame();
           setGameState(GameState.GAME);
         }}
       >
-        init
-      </button>
+        Démarrer
+      </Button>
       <div ref={divRef}></div>
       <svg ref={svgRef} className="bg-black" width={400} height={440}>
         {piece1.show()}
         {gameField.show()}
         {nextPiece.show()}
       </svg>
+      <h2 className="text-2xl">
+        {gameState === GameState.END
+          ? "Game Over"
+          : score === 404
+          ? "Félicitation! Vous avez perdu votre temps ! "
+          : ""}
+      </h2>
+      <h2>Tip : utilisez les flèches de direction</h2>
     </div>
   );
 }
