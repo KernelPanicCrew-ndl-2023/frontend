@@ -1,25 +1,17 @@
-const blankLine: (HTMLElement | undefined)[] = [
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-];
+import { Block } from "./Block";
+import { blockWidth } from "./const";
+
+const blankLine: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 // field : 10*22
 export class Field {
-  field: Array<Array<HTMLElement | undefined>>;
+  field: Array<Array<number>>;
   constructor() {
     this.field = [];
     for (let i = 0; i < 22; ++i) {
       const line = [];
       for (let j = 0; j < 10; ++j) {
-        line.push(undefined);
+        line.push(0);
       }
       this.field.push(line);
     }
@@ -29,7 +21,7 @@ export class Field {
     for (let i = 0; i < this.field.length; ++i) {
       let full = true;
       for (let j = 0; j < this.field[i].length; ++j) {
-        if (this.field[i][j] === undefined) {
+        if (this.field[i][j] === 0) {
           full = false;
           break;
         }
@@ -43,7 +35,6 @@ export class Field {
         }
         const bot = this.field.slice(i + 1);
         for (let j = 0; j < bot.length; ++j) {
-          console.log(j);
           temp.push(bot[j]);
         }
         this.field = copy2DArray(temp);
@@ -63,6 +54,26 @@ export class Field {
       default:
         return combo * 300;
     }
+  }
+  show() {
+    return (
+      <g>
+        {this.field.map((line, i) => (
+          <>
+            {line.map((b, j) => (
+              <Block
+                key={`${i}#${j}`}
+                x={j * blockWidth + 1}
+                y={i * blockWidth + 1}
+                width={blockWidth - 2}
+                height={blockWidth - 2}
+                texture={b}
+              />
+            ))}
+          </>
+        ))}
+      </g>
+    );
   }
 }
 
