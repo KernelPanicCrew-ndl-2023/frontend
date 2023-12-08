@@ -1,5 +1,7 @@
 import Carousel from "../components/Carousel";
 import { CarouselCard, CarouselCardProps } from "../components/CarouselCard";
+import Santa from "./../assets/Santa.svg";
+import "./easter_egg_animation.css";
 
 export default function Home() {
   const items: CarouselCardProps[] = [
@@ -24,6 +26,8 @@ export default function Home() {
     },
   ];
 
+  
+
   return (
     <>
       <div className="w-full h-[98vh]">
@@ -33,6 +37,7 @@ export default function Home() {
           ))}
         />
       </div>
+      <img id="Santa" src={Santa} alt="Santa" className="h-20 fixed top-20"/>
       <div className="bg-red-600 p-5">
         <div className="bg-white rounded p-5">
           <p>

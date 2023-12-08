@@ -1,0 +1,15 @@
+#Santa {
+    animation-name: easter_egg;
+    animation-duration:10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes easter_egg {
+    0% {left:-66px;}
+
+    50% {left:-66px;transform:rotate(0deg)}
+
+    75% {left:20px; transform:rotate(45deg)}
+
+    100% {left:-66px; transform:rotate(0deg);};
+}
