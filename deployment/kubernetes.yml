@@ -55,6 +55,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: sautax/frontend-ndl:latest
+          image: sautax/frontend-ndl:1.0
           ports:
             - containerPort: 80
