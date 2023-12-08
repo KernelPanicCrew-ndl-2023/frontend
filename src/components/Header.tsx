@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const items = [
     {
-      title: "Acceuil",
+      title: "Accueil",
       link: "/",
     },
     {
