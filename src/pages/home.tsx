@@ -4,38 +4,22 @@ import { CarouselCard, CarouselCardProps } from "../components/CarouselCard";
 export default function Home() {
   const items: CarouselCardProps[] = [
     {
-      title: "Titre 1",
-      description: "Description 1",
-      link: "https://www.google.com",
-      image: "https://picsum.photos/200/300",
-      color: "bg-red-500",
+      title: "Quiz",
+      description: ["Vérifiez vos connaissances sur les émissions de CO2E et leurs impactes sur l'environnement"],
+      link: "/quizz",
+      image: "https://resize.elle.fr/article/var/oa/content/images/tests/original/5583_test-1670858097.jpg",
     },
     {
-      title: "Titre 2",
-      description: "Description 2",
-      link: "https://www.google.com",
-      image: "https://picsum.photos/200/300",
-      color: "bg-blue-500",
-    },
-    {
-      title: "Titre 3",
-      description: "Description 3",
-      link: "https://www.google.com",
-      image: "https://picsum.photos/200/300",
-      color: "bg-green-500",
-    },
-    {
-      title: "Titre 4",
-      description: "Description 4",
-      link: "https://www.google.com",
-      image: "https://picsum.photos/200/300",
-      color: "bg-yellow-500",
+      title: "Testez-vous",
+      description: ["Etes vous un citoyen éco-responsable ?", "Faites le test et comparez vous aux autres participants pour le savoir !"],
+      link: "/survey",
+      image: "https://www.gouvernement.fr/upload/media/content/0001/03/3650e1f2958b80382c4dac04db15145fdc231af4.jpeg",
     },
   ];
 
   return (
     <>
-      <div className="w-full h-[95vh]">
+      <div className="w-full h-[98vh]">
         <Carousel
           items={items.map((item) => (
             <CarouselCard {...item} />
