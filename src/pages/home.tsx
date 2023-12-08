@@ -1,7 +1,11 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import Carousel from "../components/Carousel";
 import { CarouselCard, CarouselCardProps } from "../components/CarouselCard";
-import Santa from "./../assets/Santa.svg";
+import Santa from "./../assets/Santa.svg?react";
+import Cadeau from "./../assets/Cadeau.svg?react";
 import "./easter_egg_animation.css";
+import { useState } from "react";
 
 export default function Home() {
   const items: CarouselCardProps[] = [
@@ -26,10 +30,20 @@ export default function Home() {
     },
   ];
 
-  
+  const [displayGift, setDisplayGift] = useState(false);
+
+  const handleSantaClick = () => {
+    console.log('Santa clicked');
+    setDisplayGift(true);
+    setTimeout(() => {
+      setDisplayGift(false);
+    }, 3000);
+  }
 
   return (
     <>
+      <Santa id="Santa" className="h-20 w-16 fixed top-20 z-50" onClick={handleSantaClick} />
+      <Cadeau className={`h-30 w-30 fixed top-[40%] left-[40%] ${displayGift ? null : 'hidden'}`} />
       <div className="w-full h-[98vh]">
         <Carousel
           items={items.map((item) => (
@@ -37,7 +51,6 @@ export default function Home() {
           ))}
         />
       </div>
-      <img id="Santa" src={Santa} alt="Santa" className="h-20 fixed top-20"/>
       <div className="bg-red-600 p-5">
         <div className="bg-white rounded p-5">
           <p>

@@ -9,7 +9,7 @@
 
     50% {left:-66px;transform:rotate(0deg)}
 
-    75% {left:20px; transform:rotate(45deg)}
+    75% {left:5px; transform:rotate(45deg)}
 
     100% {left:-66px; transform:rotate(0deg);};
 }
